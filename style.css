@@ -1,3 +1,16 @@
+*{
+       box-sizing: border-box;
+}
+body{
+       background-color:#e8e8e8;
+}
+.error{
+       text-align: center;
+       background-color:  rgb(168, 48, 48);
+       font-size: 40px;
+       font-weight: bold;
+       color: #eeeeee;
+}
 .container{
        height: 300px;
        padding-left: 35%;
@@ -10,26 +23,23 @@
        background-color: #252525;
        display: flex;
        flex-direction: column;
-       width: 40%;
-       padding: 0 45px 45px 45px;
+       width: 38%;
+       padding: 0 35px 35px 35px;
 }
 .input{
        margin: 4px;
        height: 30px;
        padding: 0 5px;
+       width: 80%;
 }
 .button{
-       margin: 2px;
+       margin-top: 15px;
        border: none; 
        height: 45px;
+       width: 50%;
        font-weight: bold;
+       background-color:#4cbe65;
+
 }
 
-.delete{
- background-color:#be4c4c;
-}
 
-.save{
-      margin-top: 7px;
-      background-color: #eeeeee;
-}
