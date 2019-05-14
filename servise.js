@@ -35,8 +35,9 @@ function renderUser(name,age) {
    
 async function createUser(){
        const createButton = document.querySelector('button');
-       createButton.addEventListener('click',function createInfo(name,age) {
-              
+       createButton.addEventListener('click',
+           function createInfo(name,age) {
+              const inputName = document.querySelector(`input [value=${name}]`);
        })
        
        const user = await renderUser();
