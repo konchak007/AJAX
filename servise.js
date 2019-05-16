@@ -1,54 +1,29 @@
-const url = 'https://test-users-api.herokuapp.com/users';
 
-function get() {
-       axios.get(url)
-       .then(function(response) {
-            const way = response.data.data;
-            way.forEach(id => {                 
-                   renderUser(id.name , id.age)
-            }); 
-       })
-       .catch(function (error) {   
-              console.log(error);
-       });  
-}
-get();
 
-function renderUser(name,age) {
-       const userContainer = document.querySelector('.users-container');
-       const userCard = document.createElement('div');
-       userCard.classList.add('user-card');
-       userContainer.appendChild(userCard);
-       
-       userCard.innerHTML = `<div>${name}</div><div>${age}</div>`;
 
-       const userDelete = document.createElement('button');
-       userDelete.classList.add('delete-button');
-       userDelete.innerHTML = 'Delete';
 
-       const userSave = document.createElement('button');
-       userSave.classList.add('save-button');
-       userSave.innerHTML = 'Save';
-       userCard.appendChild(userSave);
-       userCard.appendChild(userDelete);      
-}
-   
-async function createUser(){
+
+/*async function createUser(){
        const createButton = document.querySelector('button');
        createButton.addEventListener('click',
            function createInfo(name,age) {
-              const inputName = document.querySelector(`input [value=${name}]`);
+              const inputName = document.querySelector('.name');
+              inputName.value = name;
+              if (name != '') {
+                     alert("The name may have no more than 10 characters");
+                     ///////error
+              }
+              const inputAge = document.querySelector('.age');
+              inputAge.value = age ; 
+                  if (isNaN(age) || age < 1 || age > 100) {
+                         alert("The age must be a number between 1 and 100");
+                         error
+              }
+              inputName.innerHTML = name;
+              inputAge.innerHTML = age;
        })
        
-       const user = await renderUser();
+     renderUser(name,age);
 }
-createUser();
+createUser();*/
 
-/*
- function post() {
-        axios.put(url) ,{
-                name : '',
-                age : Number(),
-        }
- }    
-*/
