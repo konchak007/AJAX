@@ -1,17 +1,49 @@
 const url = 'https://test-users-api.herokuapp.com/users/';
+const createButton = document.querySelector('.button');
+const error = document.querySelector('.error');
+
+
 
 async function getUser() {
     try {
            const response =  await axios.get(url)
            const way = response.data.data;
-           renderUsers(way);
-           console.log(way);   
-           } catch (error) {    
+           if (response.status ===200) {
+                  renderUsers(way); 
+           } else {
+                  throw new Error();
+           }
+           
+           } catch (error) {  
+                    error.innerHTML = 'Cannot get user account' 
     }  
 }
 
 getUser();
 
+async function createUser() {
+       const name = document.getElementById('#name').value;
+           
+        const age = document.getElementById('#age').value;
+        
+        const userInfo = {name , age};
+        renderUsers([userInfo])
+try {   const postUser = await axios.put(url,{
+       name: name,
+       age : age
+});
+       // document.getElementById('#name').value= '';
+      // document.querySelector('#age').value = '';
+       
+              
+             
+     
+      ;
+} catch (error) {
+       
+}
+    
+}
  function renderUsers(way) {
 
        way.forEach(el => {
@@ -21,37 +53,36 @@ getUser();
        userCard.classList.add('user-card');
        userContainer.appendChild(userCard);
 
-       userCard.innerHTML = `<div>${el.name}</div><div>${el.age}</div>`;
+              userCard.innerHTML = `<input type="submit" value ="${el.name}" class="inputs"></input>
+              <br>
+              <input type="submit" value ="${el.age}"class="inputs"></input>
+              <br>`;
 
        const userDelete = document.createElement('button');
        userDelete.classList.add('delete-button');
        userDelete.innerHTML = 'Delete';     
        
-       const userSave = document.createElement('button');
-       userSave.classList.add('save-button');
-       userSave.innerHTML = 'Save';
-       userCard.appendChild(userSave);
        userCard.appendChild(userDelete);
        
-       userDelete.addEventListener('click',(id)=>{
-              deleteFromServer(id);
-              const changeClass = document.querySelector('.user-card');
-              changeClass.classList.remove('user-card');
-              changeClass.classList.add('display-none');
+       userDelete.addEventListener('click',()=>{
+              deleteFromServer(el.id,userCard);
+          
        })
-       userSave.addEventListener('click',()=>{
-              saveToServer();
-       })
+       
        });
 }
 
-function deleteFromServer() {
-       axios.delete(url,{}).then(
-             
-       )
+ async function deleteFromServer(id,userCard) {
+        try {
+               const deleteUser = await axios.delete('https://test-users-api.herokuapp.com/users/'+`${id}`)
+                 if (deleteUser.status===200) {
+                       userCard.remove(); 
+                 } else {
+                        throw new Error();
+                 }   
+        } catch (error) {
+               error.innerHTML = 'Cannot delete user account';
+        }
+      
 }
- const createButton = document.querySelector('.button');
- 
- async function createUser() {
-       createButton.addEventListener('click',)
- }
+
