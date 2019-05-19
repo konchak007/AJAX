@@ -23,24 +23,23 @@ function renderUsers(way) {
 
               userDelete.addEventListener('click', () => {
                      deleteFromServer(el.id, userCard);
-
               })
-
        });
 }
 
 createButton.addEventListener('click',postUser);
 function postUser() {
-       const age = document.getElementById('#age').value;
-       const name = document.getElementById('#name').value;
-       if (name = !'' || null) {
+       const age = document.querySelector('#age').value;
+       const name = document.querySelector('#name').value;
+       if (!name) {
               error.innerHTML = 'invalid name';
-       } else if (100 < NaN(age) >= 0) {
+       } else if (100 < Number.parseInt(age) && Number.parseInt(age) >= 0) {
               error.innerHTML = 'invalid name';
        }
        const userInfo = {
               name,
               age
        }
+       
        postUser(userInfo);
 }
