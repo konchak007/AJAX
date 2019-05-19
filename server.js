@@ -20,17 +20,20 @@ async function postUser(userInfo) {
 
        try {
             const SaveToServer = await axios.post(url,userInfo)  
-            document.getElementById('#name').value='';
-              document.getElementById('#age').value='';
+           
             if (SaveToServer.status == 200) {
-                   renderUsers([userInfo]);
+                  renderUserCard({
+                                       ...SaveToServer.data.data,
+                                       id: SaveToServer.data.data._id})
             }else{
                    throw new Error();
             }
+         document.getElementById('#name').value='';
+         document.getElementById('#age').value=0;    
        } catch (error) {
               error.innerHTML = 'Cannot save user account';
        }
-       
+
     
 }
  
