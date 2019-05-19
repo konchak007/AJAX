@@ -1,6 +1,6 @@
 const createButton = document.querySelector('#button');
 const error = document.querySelector('.error');
-
+const userContainer = document.querySelector('.users-container');
 
 createButton.addEventListener('click',saveUser);
 function saveUser() {
