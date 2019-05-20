@@ -6,17 +6,23 @@ createButton.addEventListener('click',saveUser);
 function saveUser() {
        const age = document.querySelector('#age').value;
        const name = document.querySelector('#name').value;
-       if (!name) {
+       if () {
               error.innerHTML = 'invalid name';
-       } else if (100 < Number.parseInt(age) && Number.parseInt(age) >= 0) {
-              error.innerHTML = 'invalid name';
+              return false;
+              
+       } else if (!(age > 1 && age < 100)) {
+              error.innerHTML = 'invalid age';
+               return false;
+           
        }
+      
        const userInfo = {
               name,
               age
        }
        
        postUser(userInfo);
+        return true
 }
 function renderUserCard(user) {
        const userCard = document.createElement('div');
