@@ -6,23 +6,20 @@ createButton.addEventListener('click',saveUser);
 function saveUser() {
        const age = document.querySelector('#age').value;
        const name = document.querySelector('#name').value;
-       if () {
+       if (!isNaN(name)) {
               error.innerHTML = 'invalid name';
-              return false;
+             return false;
               
        } else if (!(age > 1 && age < 100)) {
               error.innerHTML = 'invalid age';
-               return false;
-           
-       }
-      
+               return false; 
+       } 
        const userInfo = {
               name,
               age
-       }
-       
+       }  
        postUser(userInfo);
-        return true
+       
 }
 function renderUserCard(user) {
        const userCard = document.createElement('div');
@@ -37,12 +34,10 @@ function renderUserCard(user) {
        const userDelete = document.createElement('button');
        userDelete.classList.add('delete-button');
        userDelete.innerHTML = 'Delete';
-
        userCard.appendChild(userDelete);
 
        userDelete.addEventListener('click', () => {
               deleteFromServer(user.id, userCard);
-
        })
 }
 function renderUsers(way) {

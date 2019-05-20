@@ -33,11 +33,8 @@ async function postUser(userInfo) {
        } catch (error) {
               error.innerHTML = 'Cannot save user account';
        }
-
-    
 }
  
-
  async function deleteFromServer(id,userCard) {
         try {
                const deleteUser = await axios.delete('https://test-users-api.herokuapp.com/users/'+`${id}`)
@@ -48,7 +45,6 @@ async function postUser(userInfo) {
                  }   
         } catch (error) {
                error.innerHTML = 'Cannot delete user account';
-        }
-      
+        }  
 }
 
